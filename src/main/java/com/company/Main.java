@@ -17,7 +17,6 @@ public class Main {
 
         // Languageクラスをインスタンス化
         Language language = new Language("Java", "Static");
-        System.out.println(language.getClass());
         try {
             Main.Serialize(language, fileName);
         } catch (IOException e) {
@@ -26,9 +25,7 @@ public class Main {
 
         try {
             Language deSirializedLanguage = Main.DeSerialize(fileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -52,6 +49,8 @@ public class Main {
 
         // 特定のクラスのオブジェクトの状態をストリームに書き込む
         objectOutputStream.writeObject(language);
+
+        objectOutputStream.close();
     }
 
     /**
@@ -68,6 +67,8 @@ public class Main {
 
         // 対応するwriteObjectメソッドによってストリームに書き込まれたデータを使用する特定のクラスのオブジェクトの状態を読み込み、復元する
         Language language = (Language) objectInputStream.readObject();
+
+        objectInputStream.close();
 
         return language;
     }
