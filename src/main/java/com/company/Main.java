@@ -49,6 +49,7 @@ public class Main {
 
         // 特定のクラスのオブジェクトの状態をストリームに書き込む
         objectOutputStream.writeObject(language);
+        objectOutputStream.flush();
 
         objectOutputStream.close();
     }

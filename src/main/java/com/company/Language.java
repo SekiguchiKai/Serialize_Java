@@ -8,6 +8,12 @@ import java.io.Serializable;
  */
 // Serializableインターフェースを実装する
 public class Language implements Serializable {
+
+    /**
+     * シリアルバージョンUID
+     */
+    private static final long serialVersionUID = 1L;
+
     /**
      * 言語の名前
      */
